@@ -1,0 +1,209 @@
+
+<header>
+  <h1>Exercise 001: Unique Filter</h1>
+
+  <p>
+    You have an array of user IDs that contains duplicates. Write a function that returns a new array containing only the unique IDs, sorted in ascending order.
+  </p>
+
+</header>
+<main>
+<section>
+  <h2>Example</h2>
+<ul>
+<li><strong>Input:</strong> [105, 102, 105, 101, 102, 108]</li>
+<li><strong>Expected Output:</strong> [101, 102, 105, 108]</li>
+</ul>
+
+</section>
+
+
+<script type="text/javascript">
+  function uniqueFilter(userIds) {
+    // Your code here
+    return [...new Set(userIds)].sort((a, b) => a - b);
+  }
+
+  // Test the function with the example input
+  const input = [105, 102, 105, 101, 102, 108];
+  const output = uniqueFilter(input);
+  console.log(output); // Expected Output: [101, 102, 105, 108]
+</script>
+
+<section>
+<pre><code class="language-javascript">
+  return [...new Set(userIds)].sort((a, b) => a - b);
+ </code>
+</pre>
+This line of JavaScript does two main things:
+<ol>
+  <li><strong>Removes duplicates</strong>
+ from the `userIds` array using `new Set(userIds)`, which creates a `Set` object (a collection of unique values).</li>
+  <li><strong>Sorts the unique values numerically</strong> using `.sort((a, b) => a - b)`, which sorts the array in ascending order.</li>
+</ol>
+
+The spread operator `[... ]` converts the `Set` back into an array.
+
+<div>
+<h2>How You Might Have Done This 10 Years Ago (Pre-ES6)</h2>
+<p>Before ES6 (2015), JavaScript didn't have <code>Set</code>, arrow functions, or the spread operator. Here's how you might have achieved the same result:</p>
+<h4>1. <strong>Remove Duplicates</strong></h4>
+<p>You could use a loop to filter out duplicates:</p>
+<pre><code class="language-javascript">var uniqueUserIds = [];
+for (var i = 0; i &lt; userIds.length; i++) {
+  if (uniqueUserIds.indexOf(userIds[i]) === -1) {
+    uniqueUserIds.push(userIds[i]);
+  }
+}
+</code></pre>
+<h4>2. <strong>Sort Numerically</strong></h4>
+<p>The <code>sort</code> method existed, but you'd need to pass a comparator function using the <code>function</code> keyword:</p>
+<pre><code class="language-javascript">uniqueUserIds.sort(function(a, b) {
+  return a - b;
+});
+</code></pre>
+<h4>Combined Example</h4>
+<p>Here's the full pre-ES6 version:</p>
+<pre><code class="language-javascript">var uniqueUserIds = [];
+for (var i = 0; i &lt; userIds.length; i++) {
+  if (uniqueUserIds.indexOf(userIds[i]) === -1) {
+    uniqueUserIds.push(userIds[i]);
+  }
+}
+uniqueUserIds.sort(function(a, b) {
+  return a - b;
+});
+return uniqueUserIds;
+</code></pre>
+<hr>
+<h3>Key Differences</h3>
+<ul>
+<li><strong><code>Set</code></strong>: Introduced in ES6 to simplify creating collections of unique values.</li>
+<li><strong>Arrow Functions</strong>: Introduced in ES6 for concise syntax.</li>
+<li><strong>Spread Operator</strong>: Introduced in ES6 to easily convert iterables (like <code>Set</code>) into arrays.</li>
+</ul>
+
+</div>
+
+
+
+</section>
+<section>
+  Here's how you might have written this logic in **JavaScript 10 years ago (pre-ES6, ~2014)**, along with alternatives from other eras and frameworks:
+
+<h3><strong>1. Pre-ES6 (2014 and earlier)</strong></h3>
+<p>As mentioned, you'd use a loop to remove duplicates and a <code>function</code> for sorting:</p>
+<pre><code class="language-javascript">// Remove duplicates
+var uniqueUserIds = [];
+for (var i = 0; i &lt; userIds.length; i++) {
+  if (uniqueUserIds.indexOf(userIds[i]) === -1) {
+    uniqueUserIds.push(userIds[i]);
+  }
+}
+
+// Sort numerically
+uniqueUserIds.sort(function(a, b) {
+  return a - b;
+});
+
+return uniqueUserIds;
+</code></pre>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>indexOf</code> was the standard way to check for duplicates.</li>
+<li><code>var</code> was used instead of <code>let</code>/<code>const</code>.</li>
+</ul>
+<hr>
+<hr>
+<h3><strong>2. Early ES5 (2009-2014)</strong></h3>
+<p>If you wanted to be slightly more concise, you could use <code>Array.prototype.filter</code> (introduced in ES5):</p>
+<pre><code class="language-javascript">// Remove duplicates using filter
+var uniqueUserIds = userIds.filter(function(id, index) {
+  return userIds.indexOf(id) === index;
+});
+
+// Sort numerically
+uniqueUserIds.sort(function(a, b) {
+  return a - b;
+});
+
+return uniqueUserIds;
+</code></pre>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>filter</code> + <code>indexOf</code> was a common pattern for deduplication.</li>
+</ul>
+<hr>
+<hr>
+<h3><strong>3. Using Libraries (e.g., jQuery or Lodash)</strong></h3>
+<p>If you were using <strong>Lodash</strong> (a popular utility library), you could simplify it:</p>
+<pre><code class="language-javascript">// Using Lodash
+var uniqueUserIds = _.uniq(userIds);
+uniqueUserIds = _.sortBy(uniqueUserIds, function(id) {
+  return id;
+});
+return uniqueUserIds;
+</code></pre>
+<p><strong>Note:</strong></p>
+<ul>
+<li>Lodash's <code>_.uniq</code> removes duplicates.</li>
+<li><code>_.sortBy</code> sorts the array numerically.</li>
+</ul>
+<hr>
+<hr>
+<h3><strong>4. Using Underscore.js (Another Popular Library)</strong></h3>
+<pre><code class="language-javascript">// Using Underscore.js
+var uniqueUserIds = _.uniq(userIds);
+uniqueUserIds = _.sortBy(uniqueUserIds, function(id) {
+  return id;
+});
+return uniqueUserIds;
+</code></pre>
+<hr>
+<hr>
+<h3><strong>5. ES6+ (2015 and Later)</strong></h3>
+<p>This is the modern version you shared:</p>
+<pre><code class="language-javascript">return [...new Set(userIds)].sort((a, b) =&gt; a - b);
+</code></pre>
+<hr>
+<hr>
+<h3><strong>6. TypeScript (Modern Alternative)</strong></h3>
+<p>If you were using TypeScript, it would look similar to ES6 but with type annotations:</p>
+<pre><code class="language-typescript">const uniqueUserIds: number[] = [...new Set(userIds)];
+return uniqueUserIds.sort((a, b) =&gt; a - b);
+</code></pre>
+<hr>
+
+<hr>
+<h3><strong>7. Functional Programming Style (Pre-ES6)</strong></h3>
+<p>If you preferred a functional approach, you might use <code>reduce</code>:</p>
+<pre><code class="language-javascript">var uniqueUserIds = userIds.reduce(function(acc, id) {
+  if (acc.indexOf(id) === -1) {
+    acc.push(id);
+  }
+  return acc;
+}, []);
+
+uniqueUserIds.sort(function(a, b) {
+  return a - b;
+});
+
+return uniqueUserIds;
+</code></pre>
+
+
+<hr>
+<hr>
+<h3><strong>Key Takeaways</strong></h3>
+<ul>
+<li><strong>Pre-ES6</strong>: Loops, <code>indexOf</code>, and <code>function</code> were the norm.</li>
+<li><strong>ES5</strong>: <code>filter</code> and <code>reduce</code> became more common.</li>
+<li><strong>Libraries</strong>: Lodash/Underscore simplified array operations.</li>
+<li><strong>ES6+</strong>: <code>Set</code>, arrow functions, and spread operator made it concise.</li>
+</ul>
+
+</section>
+</main>
+<footer>
+
+</footer>
