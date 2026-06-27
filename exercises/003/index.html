@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHP</title>
+</head>
+<body>
+  <header>
+    <h1>Exercise 003: </h1>
+
+    <p>
+    You have an array of product objects. Use the .map()method to create a new array containing only the names of the products in uppercase.
+    </p>
+  </header>
+  <main>
+    <section>
+      <h2>Example</h2>
+        <ul>
+      <li><strong>Input:</strong>[{id: 1, name: 'laptop'}, {id: 2, name: 'phone'}, {id: 3, name: 'tablet'}]</li>
+      <li><strong>Expected Output:</strong>['LAPTOP', 'PHONE', 'TABLET']</li>
+      </ul>
+    </section>
+    <section>
+
+      <div id="output">
+        <h3>Output:</h3>
+        <p id="output-value"></p>
+      </div>
+
+      <script type="text/javascript">
+        const products = [
+          {id: 1, name: 'laptop'},
+          {id: 2, name: 'phone'},
+          {id: 3, name: 'tablet'}
+        ];
+
+        const productNamesUpperCase = products.map(product => product.name.toUpperCase());
+
+        console.log(productNamesUpperCase); // Output: ['LAPTOP', 'PHONE', 'TABLET']
+
+        productNamesUpperCase.forEach(name => {
+          const p = document.createElement('p');
+          p.textContent = name;
+          document.getElementById('output-value').appendChild(p);
+        });
+      </script>
+
+<h2>Code:</h2>
+      <pre>
+
+        const products = [
+          {id: 1, name: 'laptop'},
+          {id: 2, name: 'phone'},
+          {id: 3, name: 'tablet'}
+        ];
+
+        const productNamesUpperCase = products.map(product => product.name.toUpperCase());
+
+        console.log(productNamesUpperCase); // Output: ['LAPTOP', 'PHONE', 'TABLET']
+
+        productNamesUpperCase.forEach(name => {
+          const p = document.createElement('p');
+          p.textContent = name;
+          document.getElementById('output-value').appendChild(p);
+        });
+      </pre>
+      
+    </section>
+  </main>
+
+  <footer>
+
+
+  </footer>
+
+</body>
+</html>
