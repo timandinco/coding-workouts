@@ -7,7 +7,7 @@
 </head>
 <body>
 <header>
-    <h1>Exercise 005: PHP (The Inventory Auditor)</h1>
+    <h1>Exercise 005: The Inventory Auditor</h1>
 
     <section id="description">
       <div id="focus">
@@ -62,9 +62,98 @@
 
         <h4>Output:</h4>
         <?php
-        
+          $inventory = [
+          ["name" => "Keyboard", "price" => 50, "stock_count" => 10],
+          ["name" => "Mouse", "price" => 25, "stock_count" => 0],
+          ["name" => "Monitor", "price" => 200, "stock_count" => 5],
+          ["name" => "Mousepad", "price" => 15, "stock_count" => 0],
+          ["name" => "Laptop", "price" => 1000, "stock_count" => 2],
+          ["name" => "Charger", "price" => 20, "stock_count" => 10],
+          ["name" => "Webcam", "price" => 80, "stock_count" => 0],
+          ["name" => "Headset", "price" => 120, "stock_count" => 3],
+          ];
+
+        $inStockProducts = array_filter($inventory, function($product) {
+            return $product['stock_count'] > 0;
+        });
+
+        $inStock = array_filter($inventory, fn($product) => $product['stock_count'] > 0);
+
+        $totalValue = array_reduce($inStockProducts, function($carry, $product) {
+          return $carry + ($product['price'] * $product['stock_count']);
+        }, 0);
+
+        printf("In stock: %s. Total Value: \$%d", implode(", ", array_column($inStockProducts, 'name')), $totalValue);
+
+        echo "<pre>";
+        var_dump($inStockProducts);
+        var_dump($inStock);
+        var_dump($totalValue);
+
         ?>
 
+
+      <?php
+      $names = [];
+      $total = 0;
+      foreach ($inventory as $p) {
+          if ($p['stock_count'] > 0) {
+              $names[] = $p['name'];
+              $total += $p['price'] * $p['stock_count'];
+          }
+      }
+      printf("In stock: %s. Total Value: \$%d", implode(", ", $names), $total);
+        ?>
+
+
+    <?php
+    $inStock = array_filter($inventory, fn($p) => $p['stock_count'] > 0);
+    $names = implode(", ", array_column($inStock, 'name'));
+    $total = array_sum(array_map(fn($p) => $p['price'] * $p['stock_count'], $inStock));
+    echo "In stock: $names. Total Value: \$$total";
+
+    ?>
+
+    <?php
+    $acc = array_reduce($inventory, function($carry, $p) {
+        if ($p['stock_count'] <= 0) return $carry;
+        $carry['names'][] = $p['name'];
+        $carry['total'] += $p['price'] * $p['stock_count'];
+        return $carry;
+    }, ['names' => [], 'total' => 0]);
+
+    printf("In stock: %s. Total Value: \$%d", implode(", ", $acc['names']), $acc['total']);
+
+    ?>
+
+    <?php
+    $names = [];
+    $total = 0;
+    array_walk($inventory, function($p) use (&$names, &$total) {
+        if ($p['stock_count'] > 0) {
+            $names[] = $p['name'];
+            $total += $p['price'] * $p['stock_count'];
+        }
+    });
+    $output = sprintf("In stock: %s. Total Value: \$%d", implode(", ", $names), $total);
+    echo $output;
+    ?>
+
+    <?php
+      function inStockGenerator(array $inventory) {
+          foreach ($inventory as $p) {
+              if ($p['stock_count'] > 0) yield $p;
+          }
+      }
+
+      $names = [];
+      $total = 0;
+      foreach (inStockGenerator($inventory) as $p) {
+          $names[] = $p['name'];
+          $total += $p['price'] * $p['stock_count'];
+      }
+      printf("In stock: %s. Total Value: \$%d", implode(", ", $names), $total);
+      ?>
       </div>
     </section>
 

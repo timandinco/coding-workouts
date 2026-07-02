@@ -37,25 +37,92 @@
       </pre>
     </section>
 
-    <section>
+       <section>
+      <h2>Solutions</h2>
 
-      <h4>PHP Code:</h4>
-      <pre>
-
-      </pre>
-
-      
-      <?php
+      <div>
+        <h4>PHP Code:</h4>
+        <pre>
         $users = [
           ['name' => '  alice smith ', 'email' => 'ALICE@example.com', 'status' => 'active'],
           ['name' => 'bob JONES', 'email' => 'Bob@Repo.com', 'status' => 'inactive'],
           ['name' => '  cHarLie brown', 'email' => 'CHARLIE@BRwn.net', 'status' => 'active'],
         ];
 
-      ?>
-    </section>
-    <section>
-      <h4>Output:</h4>
+        $filteredUsers = array_filter($users, function($user) {
+            return $user['status'] === 'active';
+        });
+
+        $filteredUsers = array_map(function($user) {
+            $user['name'] = ucwords(strtolower(trim($user['name'])));
+            $user['email'] = strtolower($user['email']);
+            return $user;
+        }, $filteredUsers);     
+        </pre>
+
+        <h4>Optimized PHP Code:</h4>
+        <pre>
+          $filteredUsers = array_map(function($user) {
+              if ($user['status'] !== 'active') {
+                  return null;
+              }
+              return [
+                  'name' => ucwords(strtolower(trim($user['name']))),
+                  'email' => strtolower($user['email']),
+                  'status' => $user['status']
+              ];
+          }, $users);
+
+          $filteredUsers = array_values(array_filter($filteredUsers));
+        </pre>
+
+        <h4>Output:</h4>
+        <?php
+        $users = [
+          ['name' => '  alice smith ', 'email' => 'ALICE@example.com', 'status' => 'active'],
+          ['name' => 'bob JONES', 'email' => 'Bob@Repo.com', 'status' => 'inactive'],
+          ['name' => '  cHarLie brown', 'email' => 'CHARLIE@BRwn.net', 'status' => 'active'],
+        ];
+
+        $filteredUsers = array_filter($users, function($user) {
+            return $user['status'] === 'active';
+        });
+
+        $filteredUsers = array_map(function($user) {
+            $user['name'] = ucwords(strtolower(trim($user['name'])));
+            $user['email'] = strtolower($user['email']);
+            return $user;
+        }, $filteredUsers);        
+        
+        echo "<pre>";
+        var_dump($users);
+        var_export($filteredUsers);
+
+
+        $cleanedUsers = array_map(function($user) {
+              if ($user['status'] !== 'active') {
+                  return null;
+              }
+              return [
+                  'name' => ucwords(strtolower(trim($user['name']))),
+                  'email' => strtolower($user['email']),
+                  'status' => $user['status']
+              ];
+          }, $users);
+
+        
+
+
+        echo "<pre>";
+
+        var_export($cleanedUsers);
+
+        $cleanedUsers = array_values(array_filter($cleanedUsers));
+
+        var_export($cleanedUsers);
+        ?>
+
+      </div>
     </section>
   </main>
 </body>
