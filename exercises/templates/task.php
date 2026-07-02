@@ -6,24 +6,67 @@
   <title>PHP</title>
 </head>
 <body>
-    <h1></h1>
-    <p>
+<header>
+    <h1>Exercise 005: </h1>
 
-    </p>
-<ul>
-<li><strong>Input:</strong></li>
+    <section id="description">
+      <div id="focus">
+        <strong>Focus: </strong> 
+        <p>
+        </p>
+      </div>
+      <div id="task">
+        <strong>The Task:</strong>
+  
+        <ol>
+          <li></li>
 
-</ul>
+        </ol>
+      </div>
+    </section>
+  </header>
+  <main>
+    <section>
+      <h2>Examples</h2>
+      <div id="data">
+        <h3>Input:</h3>
+        <pre>
+
+        </pre>
+      </div>
+
+      <div id="output">
+        <h3>Output:</h3>
+        <p id="output-value">
+          <pre></pre>
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Solutions</h2>
+
+      <div>
+        <h4>PHP Code:</h4>
+        <pre>
+
+        </pre>
+
+        <h4>Output:</h4>
+        <?php
+        
+        ?>
+
+      </div>
+    </section>
+
+ 
+  </main>
+
+  <footer>
 
 
-    <h4>PHP Code:</h4>
-    <pre>
+  </footer>
 
-    </pre>
-
-    <h4>Output:</h4>
-    <?php
-    
-    ?>
 
 </body>
