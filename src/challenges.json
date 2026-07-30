@@ -1,0 +1,82 @@
+[
+    {
+        "id": "001",
+        "slug": "score-averager",
+        "title": "The Score Averager",
+        "description": "Use array_filter(), array_sum(), and count() to calculate the average of the remaining scores after removing any scores below 50. Output the final average as a raw number.",
+        "focus": "Array filters and arithmetic",
+        "starter_code": "$scores = [45, 88, 92, 30, 75, 60];\n",
+        "context_code": "",
+        "expected_output": "78.75"
+    },
+    {
+        "id": "002",
+        "slug": "associative-merge",
+        "title": "Associative Merge",
+        "description": "Write code to merge two associative arrays so values from the second array ($newSettings) overwrite the first ($defaultSettings) when the keys overlap. Then, print the final array as a JSON string using json_encode().",
+        "focus": "Associative arrays and JSON output",
+        "starter_code": "$defaultSettings = ['theme' => 'light', 'notifications' => true, 'lang' => 'en'];\n$newSettings = ['theme' => 'dark', 'lang' => 'fr'];\n",
+        "context_code": "",
+        "expected_output": "{\"theme\":\"dark\",\"notifications\":true,\"lang\":\"fr\"}"
+    },
+    {
+        "id": "003",
+        "slug": "order-summary",
+        "title": "Order Summary",
+        "description": "Filter the array of orders, keeping only those with a status of 'paid'. Sum their totals, select their customer names (preserving input order), and print the summary in the exact format:\nPaid customers: Alice, Carla, Dan\nTotal paid: 245.75",
+        "focus": "Filtering and aggregating arrays",
+        "starter_code": "$orders = [\n    ['customer' => 'Alice', 'total' => 120.50, 'status' => 'paid'],\n    ['customer' => 'Bob', 'total' => 75.00, 'status' => 'pending'],\n    ['customer' => 'Carla', 'total' => 45.25, 'status' => 'paid'],\n    ['customer' => 'Dan', 'total' => 80.00, 'status' => 'paid'],\n];\n",
+        "context_code": "",
+        "expected_output": "Paid customers: Alice, Carla, Dan\nTotal paid: 245.75"
+    },
+    {
+        "id": "004",
+        "slug": "user-data-sanitizer",
+        "title": "The User Data Sanitizer",
+        "description": "Clean, filter, and transform the user data array. Perform the following steps:\n1. Filter: Remove any users who are marked as inactive.\n2. Sanitize: Trim whitespace from names and ensure all emails are lowercase.\n3. Transform: Format names to Title Case (e.g. '  alice smith ' becomes 'Alice Smith').\n4. Output the result array using json_encode().",
+        "focus": "Transforms, sanitizing, and filtering",
+        "starter_code": "$users = [\n  ['name' => '  alice smith ', 'email' => 'ALICE@example.com', 'status' => 'active'],\n  ['name' => 'bob JONES', 'email' => 'Bob@Repo.com', 'status' => 'inactive'],\n  ['name' => '  cHarLie brown', 'email' => 'CHARLIE@BRwn.net', 'status' => 'active'],\n];\n",
+        "context_code": "",
+        "expected_output": "[{\"name\":\"Alice Smith\",\"email\":\"alice@example.com\",\"status\":\"active\"},{\"name\":\"Charlie Brown\",\"email\":\"charlie@brwn.net\",\"status\":\"active\"}]"
+    },
+    {
+        "id": "005",
+        "slug": "inventory-auditor",
+        "title": "The Inventory Auditor",
+        "description": "Write code that processes an inventory array. Filter out any products that have a stock_count of 0. Calculate the total value of the remaining inventory (Price x Stock). Output a single string: 'In stock: [Product Names separated by commas]. Total Value: $[Total]'.",
+        "focus": "Associative arrays and aggregation",
+        "starter_code": "$inventory = [\n    ['name' => 'Keyboard', 'price' => 50, 'stock_count' => 10],\n    ['name' => 'Mouse', 'price' => 25, 'stock_count' => 0],\n    ['name' => 'Monitor', 'price' => 200, 'stock_count' => 5],\n    ['name' => 'Mousepad', 'price' => 15, 'stock_count' => 0],\n    ['name' => 'Laptop', 'price' => 1000, 'stock_count' => 2],\n    ['name' => 'Charger', 'price' => 20, 'stock_count' => 10],\n    ['name' => 'Webcam', 'price' => 80, 'stock_count' => 0],\n    ['name' => 'Headset', 'price' => 120, 'stock_count' => 3],\n];\n",
+        "context_code": "",
+        "expected_output": "In stock: Keyboard, Monitor, Laptop, Charger, Headset. Total Value: $4060"
+    },
+    {
+        "id": "006",
+        "slug": "coupon-validator",
+        "title": "The Coupon Validator",
+        "description": "Iterate through a list of order totals. Apply a 15% discount only to orders that are $100 or more. Format all the resulting prices to 2 decimal places (so they are strings), and output the outer processed array as a JSON string using json_encode().",
+        "focus": "Loop logic, conditional updates, and number formatting",
+        "starter_code": "$orders = [120.50, 45.00, 200.00, 99.99, 150.00];\n",
+        "context_code": "",
+        "expected_output": "[\"102.43\",\"45.00\",\"170.00\",\"99.99\",\"127.50\"]"
+    },
+    {
+        "id": "007",
+        "slug": "category-totals",
+        "title": "The Category Totals",
+        "description": "Group the grocery items by category and compute the total cost of all items in that category rounded to 2 decimal places. Sort the resulting associative array alphabetically by category name (key) using ksort(), and output the result as a JSON string via json_encode().",
+        "focus": "Associative arrays and conditional grouping",
+        "starter_code": "$items = [\n    ['name' => 'Apple',  'category' => 'Fruit', 'price' => 1.50],\n    ['name' => 'Carrot', 'category' => 'Veg',   'price' => 0.80],\n    ['name' => 'Banana', 'category' => 'Fruit', 'price' => 1.20],\n    ['name' => 'Broccoli','category' => 'Veg',   'price' => 1.10],\n    ['name' => 'Steak',  'category' => 'Meat',  'price' => 15.00]\n];\n",
+        "context_code": "",
+        "expected_output": "{\"Fruit\":2.7,\"Meat\":15,\"Veg\":1.9}"
+    },
+    {
+        "id": "008",
+        "slug": "reverse-string-practice",
+        "title": "Reverse String Practice",
+        "description": "Reverse the given string using strrev().",
+        "focus": "String functions",
+        "starter_code": "$str = 'antigravity';",
+        "context_code": "",
+        "expected_output": "ytivargitna"
+    }
+]
